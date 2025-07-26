@@ -1,0 +1,40 @@
+{
+  "os": "Windows-10-10.0.19045-SP0",
+  "python": "CPython 3.10.16",
+  "startedAt": "2025-07-26T13:21:50.615853Z",
+  "program": "D:\\energyAI-Task\\main.py",
+  "codePath": "main.py",
+  "codePathLocal": "main.py",
+  "git": {
+    "remote": "https://github.com/EsraaKamel11/energyAI-Task",
+    "commit": "9f4e0e9f27f2db619bc3f7a4975fd6c3b3e24331"
+  },
+  "email": "israa.kamel811@gmail.com",
+  "root": "D:\\energyAI-Task",
+  "host": "DESKTOP-GU8MSCV",
+  "executable": "D:\\conda-envs\\gpu-env\\python.exe",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "gpu": "NVIDIA GeForce MX150",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "151201509376",
+      "used": "89356607488"
+    }
+  },
+  "memory": {
+    "total": "17059450880"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce MX150",
+      "memoryTotal": "2147483648",
+      "cudaCores": 384,
+      "architecture": "Pascal",
+      "uuid": "GPU-df637e5a-5dce-0fa6-b997-5faaac2f9a9f"
+    }
+  ],
+  "cudaVersion": "12.9",
+  "writerId": "cckzmz38qsf2n40xt2c8e5bldyv5ukoa"
+}

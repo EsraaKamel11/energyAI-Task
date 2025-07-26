@@ -1,0 +1,260 @@
+# EV Charging Stations End-to-End Pipeline Configuration
+# Interview Task: Fine-tune & Serve Small Language Model
+
+# Target Domain Configuration
+domain:
+  name: "electric vehicle charging stations"
+  description: "AI assistant for EV charging information, guidance, and best practices"
+  use_case: "question-answering"
+  base_model: "meta-llama/Llama-2-7b-hf"  # ≤7B parameters as required
+  fallback_model: "gpt2-medium"  # Fallback for testing
+
+# Data Collection Configuration
+data_collection:
+  web_scraping:
+    enabled: true
+    sources:
+      - "https://www.chargepoint.com"
+      - "https://www.electrifyamerica.com"
+      - "https://www.plugshare.com"
+      - "https://www.tesla.com/supercharger"
+    max_pages_per_site: 50
+    delay_between_requests: 2
+  
+  pdf_extraction:
+    enabled: true
+    layout_preservation: true
+    sources:
+      - "data/documents/ev_charging_guides.pdf"
+      - "data/documents/charging_standards.pdf"
+    max_pages_per_pdf: 100
+  
+  metadata_extraction:
+    enabled: true
+    required_fields:
+      - "source"
+      - "source_type"
+      - "extracted_at"
+      - "confidence_score"
+
+# Data Processing Configuration
+data_processing:
+  cleaning:
+    enabled: true
+    remove_duplicates: true
+    quality_threshold: 0.7
+    min_text_length: 50
+    max_text_length: 2000
+  
+  normalization:
+    enabled: true
+    lowercase: false
+    remove_special_chars: false
+    preserve_numbers: true
+  
+  storage:
+    format: "parquet"
+    compression: "snappy"
+    backup_enabled: true
+
+# Training Dataset Configuration
+training_dataset:
+  llm_api:
+    provider: "openai"
+    model: "gpt-4-turbo"
+    temperature: 0.3
+    max_tokens: 500
+  
+  qa_generation:
+    enabled: true
+    questions_per_document: 5
+    min_answer_length: 50
+    max_answer_length: 300
+  
+  augmentation:
+    enabled: true
+    paraphrasing: true
+    back_translation: false
+  
+  formatting:
+    conversation_template: true
+    system_prompt: "EV Assistant: I'm here to help you with electric vehicle charging information. I can provide guidance on charging stations, connectors, and best practices."
+
+# Fine-tuning Configuration
+fine_tuning:
+  model:
+    base_model: "meta-llama/Llama-2-7b-hf"
+    quantization: "4bit"
+    lora:
+      enabled: true
+      r: 16
+      lora_alpha: 32
+      lora_dropout: 0.05
+      target_modules: ["q_proj", "v_proj", "k_proj", "o_proj"]
+  
+  training:
+    batch_size: 2
+    gradient_accumulation_steps: 4
+    num_epochs: 4
+    learning_rate: 1e-4
+    warmup_ratio: 0.05
+    lr_scheduler: "cosine"
+    optimizer: "adamw_bnb_8bit"
+    mixed_precision: "bf16"
+    gradient_checkpointing: true
+  
+  experiment_tracking:
+    enabled: true
+    platform: "wandb"
+    project_name: "ev-charging-qlora"
+    log_metrics: ["loss", "accuracy", "rouge", "bertscore"]
+
+# Evaluation & Benchmarking Configuration
+evaluation:
+  benchmark_dataset:
+    enabled: true
+    generation_method: "llm_generated"
+    num_questions: 100
+    categories:
+      - "charging_levels"
+      - "connector_types"
+      - "cost_analysis"
+      - "installation_guide"
+      - "troubleshooting"
+  
+  metrics:
+    automated:
+      - "rouge"
+      - "bleu"
+      - "bertscore"
+      - "exact_match"
+    custom:
+      - "domain_accuracy"
+      - "technical_precision"
+  
+  baseline_comparison:
+    enabled: true
+    baseline_model: "meta-llama/Llama-2-7b-hf"
+    comparison_metrics: ["rouge", "bleu", "bertscore"]
+  
+  performance_testing:
+    enabled: true
+    latency_threshold_ms: 1000
+    throughput_target_rps: 10
+    memory_usage_limit_gb: 8
+
+# Deployment & Serving Configuration
+deployment:
+  model_registry:
+    enabled: true
+    platform: "local"
+    versioning: true
+    model_format: "safetensors"
+  
+  inference:
+    engine: "torch"
+    quantization: "4bit"
+    max_batch_size: 4
+    max_sequence_length: 1024
+  
+  api:
+    enabled: true
+    framework: "fastapi"
+    port: 8000
+    host: "0.0.0.0"
+    workers: 2
+  
+  authentication:
+    enabled: true
+    method: "api_key"
+    key_header: "X-API-Key"
+  
+  monitoring:
+    enabled: true
+    metrics:
+      - "request_count"
+      - "response_time"
+      - "error_rate"
+      - "memory_usage"
+    alerts:
+      - "high_latency"
+      - "high_error_rate"
+      - "memory_overflow"
+
+# Orchestration Configuration
+orchestration:
+  workflow:
+    automation: true
+    triggers:
+      manual: true
+      scheduled: true
+      webhook: true
+  
+  scheduling:
+    data_collection: "0 2 * * *"  # Daily at 2 AM
+    training: "0 4 * * 0"  # Weekly on Sunday at 4 AM
+    evaluation: "0 6 * * 0"  # Weekly on Sunday at 6 AM
+  
+  mlops:
+    ci_cd:
+      enabled: true
+      platform: "github_actions"
+      stages:
+        - "test"
+        - "build"
+        - "deploy"
+    
+    testing:
+      unit_tests: true
+      integration_tests: true
+      performance_tests: true
+
+# Environment Configuration
+environment:
+  development:
+    debug: true
+    log_level: "DEBUG"
+    data_limit: 1000
+  
+  production:
+    debug: false
+    log_level: "INFO"
+    data_limit: null
+  
+  testing:
+    debug: true
+    log_level: "DEBUG"
+    data_limit: 100
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  handlers:
+    file:
+      enabled: true
+      path: "logs/pipeline.log"
+      max_size: "10MB"
+      backup_count: 5
+    console:
+      enabled: true
+    monitoring:
+      enabled: true
+      platform: "prometheus"
+
+# Security Configuration
+security:
+  api_keys:
+    required: true
+    rotation_days: 30
+  
+  data_encryption:
+    enabled: true
+    algorithm: "AES-256"
+  
+  access_control:
+    enabled: true
+    roles:
+      - "admin"
+      - "user"
+      - "readonly" 

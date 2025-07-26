@@ -1,0 +1,14 @@
+{
+  "microsoft/DialoGPT-medium": {
+    "v1.0": {
+      "adapter_path": "ml_pipeline\\pipeline_output\\qlora_training\\final_model",
+      "metadata": {
+        "domain": "electric_vehicles",
+        "method": "qlora",
+        "performance": {
+          "latency": 0
+        }
+      }
+    }
+  }
+}

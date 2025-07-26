@@ -1,0 +1,43 @@
+{
+  "training_completed": true,
+  "timestamp": "2025-07-26T16:22:49.540056",
+  "model_info": {
+    "total_parameters": 203828224,
+    "trainable_parameters": 0,
+    "model_size_mb": 777.54296875,
+    "device": "cuda:0"
+  },
+  "lora_info": {
+    "trainable_parameters": 4325376,
+    "all_parameters": 208153600,
+    "trainable_percentage": 2.0779731890296396
+  },
+  "dataset_stats": {
+    "train": {
+      "num_samples": 2,
+      "avg_token_length": 1024.0,
+      "min_token_length": 1024,
+      "max_token_length": 1024,
+      "total_tokens": 2048
+    },
+    "validation": {
+      "num_samples": 1,
+      "avg_token_length": 1024.0,
+      "min_token_length": 1024,
+      "max_token_length": 1024,
+      "total_tokens": 1024
+    }
+  },
+  "training_results": {
+    "train_loss": 6.825178782145183,
+    "train_runtime": 48.9095,
+    "train_samples_per_second": 0.123,
+    "model_path": "ml_pipeline\\pipeline_output\\qlora_training\\checkpoints\\final_model"
+  },
+  "model_path": "ml_pipeline\\pipeline_output\\qlora_training\\final_model",
+  "next_steps": [
+    "Run evaluation: python run_evaluation.py --model_path <model_path>",
+    "Deploy model: python start_server.py --model_path <model_path>",
+    "Compare with baseline: python run_evaluation.py --model_path <model_path> --compare_baseline"
+  ]
+}

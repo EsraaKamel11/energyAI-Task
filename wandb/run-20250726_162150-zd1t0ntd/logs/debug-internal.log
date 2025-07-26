@@ -1,0 +1,13 @@
+{"time":"2025-07-26T16:21:50.885617+03:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-07-26T16:21:51.3865797+03:00","level":"INFO","msg":"stream: created new stream","id":"zd1t0ntd"}
+{"time":"2025-07-26T16:21:51.3865797+03:00","level":"INFO","msg":"stream: started","id":"zd1t0ntd"}
+{"time":"2025-07-26T16:21:51.3865797+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"zd1t0ntd"}
+{"time":"2025-07-26T16:21:51.3865797+03:00","level":"INFO","msg":"sender: started","stream_id":"zd1t0ntd"}
+{"time":"2025-07-26T16:21:51.3865797+03:00","level":"INFO","msg":"handler: started","stream_id":"zd1t0ntd"}
+{"time":"2025-07-26T16:22:51.0353746+03:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact training_summary","runtime_seconds":1.01617,"subtasks":[{"desc":"training_summary.json","runtime_seconds":0.0268439,"progress":"1.3KB/1.3KB"}]}],"total_operations":1}}
+{"time":"2025-07-26T16:22:52.2963321+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-26T16:22:52.7606828+03:00","level":"INFO","msg":"stream: closing","id":"zd1t0ntd"}
+{"time":"2025-07-26T16:22:52.7606828+03:00","level":"INFO","msg":"handler: closed","stream_id":"zd1t0ntd"}
+{"time":"2025-07-26T16:22:52.7606828+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"zd1t0ntd"}
+{"time":"2025-07-26T16:22:52.7606828+03:00","level":"INFO","msg":"sender: closed","stream_id":"zd1t0ntd"}
+{"time":"2025-07-26T16:22:52.7606828+03:00","level":"INFO","msg":"stream: closed","id":"zd1t0ntd"}

@@ -1,0 +1,7 @@
+{
+  "total_documents": 10,
+  "deduplication_reduction": 0.0,
+  "qa_pairs_generated": 20,
+  "domain": "electric_vehicles",
+  "base_model": "microsoft/DialoGPT-medium"
+}

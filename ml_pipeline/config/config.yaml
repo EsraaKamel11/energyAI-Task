@@ -1,0 +1,54 @@
+# EV Charging Stations Domain Configuration
+domain: "electric vehicle charging stations"
+model_name: "microsoft/DialoGPT-medium"  # Open access model
+train_batch_size: 4
+eval_batch_size: 4
+learning_rate: 3e-5
+use_gpu: true
+log_level: "INFO"
+
+# Data Collection URLs
+data_sources:
+  web_urls:
+    - "https://www.tesla.com/support/charging"
+    - "https://www.electrifyamerica.com/"
+    - "https://www.chargepoint.com/"
+    - "https://www.plugshare.com/"
+    - "https://www.chargepoint.com/charging-stations"
+    - "https://www.evgo.com/"
+  
+  pdf_paths: []  # Add your PDF paths here
+
+# Training Configuration
+training:
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  use_qlora: true
+  num_epochs: 3
+  gradient_accumulation_steps: 8
+  warmup_steps: 100
+  max_grad_norm: 1.0
+
+# Evaluation Configuration
+evaluation:
+  benchmark_size: 20
+  metrics: ["rouge", "bleu", "f1", "exact_match"]
+  latency_test_runs: 10
+
+# Deployment Configuration
+deployment:
+  api_rate_limit: "5/minute"
+  model_cache_size: 2
+  max_new_tokens: 128
+  temperature: 0.7
+
+# Domain-Specific Prompts
+prompts:
+  qa_generation: "Generate 5 diverse questions and answers about electric vehicle charging stations from this text. Include questions about charging speeds, connector types, costs, and locations. Text: {text}"
+  benchmark_questions:
+    - "What is the difference between Level 1 and Level 2 charging?"
+    - "How fast can a Tesla Supercharger charge a vehicle?"
+    - "What are the most common EV charging connector types?"
+    - "How much does it cost to charge an electric vehicle?"
+    - "Where can I find public EV charging stations?" 

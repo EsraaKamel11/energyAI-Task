@@ -1,0 +1,21 @@
+# Monitoring and CI/CD Dependencies
+prometheus-fastapi-instrumentator==6.1.0
+prometheus-client==0.17.1
+psutil==5.9.5
+
+# Testing and Quality Assurance
+pytest==7.4.0
+pytest-cov==4.1.0
+pytest-asyncio==0.21.1
+flake8==6.0.0
+black==23.7.0
+isort==5.12.0
+bandit==1.7.5
+
+# CI/CD Tools
+pre-commit==3.3.3
+coverage==7.2.7
+
+# Additional Monitoring
+structlog==23.1.0
+sentry-sdk[fastapi]==1.28.1 

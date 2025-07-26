@@ -1,0 +1,56 @@
+2025-07-26 16:21:52,563 - INFO - ml_pipeline.src.training_qlora.experiment_tracker - Started experiment: qlora_microsoft/DialoGPT-medium_20250726_162149
+2025-07-26 16:21:52,564 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - ✅ Experiment tracking started with W&B
+2025-07-26 16:21:52,566 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - 📥 Step 1: Loading model with quantization...
+2025-07-26 16:21:52,566 - INFO - ml_pipeline.src.training_qlora.model_loader - Loading model microsoft/DialoGPT-medium with 4bit quantization
+2025-07-26 16:21:53,375 - INFO - accelerate.utils.modeling - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-07-26 16:21:58,039 - INFO - ml_pipeline.src.training_qlora.model_loader - Model prepared for k-bit training
+2025-07-26 16:21:58,040 - INFO - ml_pipeline.src.training_qlora.model_loader - ✅ Model microsoft/DialoGPT-medium loaded successfully
+2025-07-26 16:21:58,045 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - Model info: {'total_parameters': 203828224, 'trainable_parameters': 0, 'model_size_mb': 777.54296875, 'device': 'cuda:0'}
+2025-07-26 16:21:58,046 - INFO - ml_pipeline.src.training_qlora.experiment_tracker - Logged model information
+2025-07-26 16:21:58,047 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - 🎯 Step 2: Setting up QLoRA configuration...
+2025-07-26 16:21:58,048 - INFO - ml_pipeline.src.training_qlora.lora_config - Created LoRA config: r=16, alpha=32, targets=['c_attn', 'c_proj']
+2025-07-26 16:21:58,049 - INFO - ml_pipeline.src.training_qlora.lora_config - Applying LoRA configuration to model...
+trainable params: 4,325,376 || all params: 359,148,544 || trainable%: 1.2043
+2025-07-26 16:21:58,356 - INFO - ml_pipeline.src.training_qlora.lora_config - ✅ LoRA configuration applied successfully
+2025-07-26 16:21:58,368 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - LoRA info: {'trainable_parameters': 4325376, 'all_parameters': 208153600, 'trainable_percentage': 2.0779731890296396}
+2025-07-26 16:21:58,369 - INFO - ml_pipeline.src.training_qlora.experiment_tracker - Logged training configuration
+2025-07-26 16:21:58,370 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - 📊 Step 3: Preparing training data...
+2025-07-26 16:21:58,371 - INFO - ml_pipeline.src.training_qlora.data_preparation - Loading QA data from ml_pipeline/pipeline_output/qa_pairs.jsonl
+2025-07-26 16:21:58,373 - INFO - ml_pipeline.src.training_qlora.data_preparation - Loaded 3 QA pairs
+2025-07-26 16:21:58,374 - INFO - ml_pipeline.src.training_qlora.data_preparation - Created 3 conversations
+2025-07-26 16:21:58,435 - INFO - ml_pipeline.src.training_qlora.data_preparation - Train samples: 2
+2025-07-26 16:21:58,436 - INFO - ml_pipeline.src.training_qlora.data_preparation - Validation samples: 1
+Map: 100%|████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00, 52.81 examples/s]
+2025-07-26 16:21:58,527 - INFO - ml_pipeline.src.training_qlora.data_preparation - Tokenized dataset with max_length=1024
+Map: 100%|███████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00, 179.90 examples/s]
+2025-07-26 16:21:58,578 - INFO - ml_pipeline.src.training_qlora.data_preparation - Tokenized dataset with max_length=1024
+2025-07-26 16:21:58,584 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - Train stats: {'num_samples': 2, 'avg_token_length': 1024.0, 'min_token_length': 1024, 'max_token_length': 1024, 'total_tokens': 2048}
+2025-07-26 16:21:58,585 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - Validation stats: {'num_samples': 1, 'avg_token_length': 1024.0, 'min_token_length': 1024, 'max_token_length': 1024, 'total_tokens': 1024}
+2025-07-26 16:21:58,586 - INFO - ml_pipeline.src.training_qlora.experiment_tracker - Logged dataset information
+2025-07-26 16:21:58,587 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - ⚙️ Step 4: Configuring training...
+2025-07-26 16:21:58,588 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - 🚀 Step 5: Starting training...
+2025-07-26 16:21:58,590 - INFO - ml_pipeline.src.training_qlora.training_loop - Setting up QLoRA training...
+D:\energyAI-Task\ml_pipeline\src\training_qlora\training_loop.py:115: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+No label_names provided for model class `PeftModelForCausalLM`. Since `PeftModel` hides base models input arguments, if label_names is not given, label_names can't be set automatically within `Trainer`. Note that empty label_names list will be used instead.
+2025-07-26 16:21:58,682 - INFO - ml_pipeline.src.training_qlora.training_loop - ✅ Training setup complete
+2025-07-26 16:21:58,690 - INFO - ml_pipeline.src.training_qlora.training_loop - 🚀 Starting QLoRA training...
+[34m[1mwandb[0m: [33mWARNING[0m The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
+  0%|                                                                                            | 0/3 [00:00<?, ?it/s]`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+100%|████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:48<00:00, 16.30s/it]
+{'train_runtime': 48.9095, 'train_samples_per_second': 0.123, 'train_steps_per_second': 0.061, 'train_loss': 6.825178782145183, 'epoch': 3.0}
+***** train metrics *****
+  epoch                    =        3.0
+  total_flos               =    10527GF
+  train_loss               =     6.8252
+  train_runtime            = 0:00:48.90
+  train_samples_per_second =      0.123
+  train_steps_per_second   =      0.061
+2025-07-26 16:22:48,672 - INFO - ml_pipeline.src.training_qlora.training_loop - ✅ Training completed! Model saved to ml_pipeline\pipeline_output\qlora_training\checkpoints\final_model
+2025-07-26 16:22:48,674 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - 💾 Step 6: Saving final model...
+2025-07-26 16:22:49,539 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - 📋 Step 7: Generating training summary...
+2025-07-26 16:22:49,540 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - ✅ QLoRA training pipeline completed successfully!
+2025-07-26 16:22:49,541 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - Final model saved to: ml_pipeline\pipeline_output\qlora_training\final_model
+2025-07-26 16:22:49,542 - INFO - ml_pipeline.src.training_qlora.main_orchestrator - Training summary saved to: ml_pipeline\pipeline_output\qlora_training\training_summary.json
+2025-07-26 16:22:49,543 - INFO - ml_pipeline.src.training_qlora.experiment_tracker - Logged final experiment summary
+2025-07-26 16:22:50,020 - INFO - ml_pipeline.src.training_qlora.experiment_tracker - Logged artifact: training_summary

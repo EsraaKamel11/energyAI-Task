@@ -1,0 +1,71 @@
+{
+  "fine_tuned_model": "qlora_fine_tuned_ev_model",
+  "baseline_model": "baseline_model",
+  "benchmark_name": "benchmark",
+  "fine_tuned_metrics": {
+    "rouge1": 0.0,
+    "rouge2": 0.0,
+    "rougeL": 0.0,
+    "bleu": 0.0,
+    "exact_match": 0.0,
+    "semantic_similarity": 0.0,
+    "price_accuracy": 0.0,
+    "technical_accuracy": 0.0,
+    "compatibility_accuracy": 0.0
+  },
+  "baseline_metrics": {
+    "rouge1": 0.0,
+    "rouge2": 0.0,
+    "rougeL": 0.0,
+    "bleu": 0.0,
+    "exact_match": 0.0,
+    "semantic_similarity": 0.0,
+    "price_accuracy": 0.0,
+    "technical_accuracy": 0.0,
+    "compatibility_accuracy": 0.0
+  },
+  "improvements": {
+    "rouge1": 0.0,
+    "rouge2": 0.0,
+    "rougeL": 0.0,
+    "bleu": 0.0,
+    "exact_match": 0.0,
+    "semantic_similarity": 0.0,
+    "price_accuracy": 0.0,
+    "technical_accuracy": 0.0,
+    "compatibility_accuracy": 0.0
+  },
+  "relative_improvements": {
+    "rouge1": 0.0,
+    "rouge2": 0.0,
+    "rougeL": 0.0,
+    "bleu": 0.0,
+    "exact_match": 0.0,
+    "semantic_similarity": 0.0,
+    "price_accuracy": 0.0,
+    "technical_accuracy": 0.0,
+    "compatibility_accuracy": 0.0
+  },
+  "statistical_significance": {
+    "rouge1": false,
+    "rouge2": false,
+    "rougeL": false,
+    "bleu": false,
+    "exact_match": false,
+    "semantic_similarity": false,
+    "price_accuracy": false,
+    "technical_accuracy": false,
+    "compatibility_accuracy": false
+  },
+  "evaluation_summary": {
+    "total_questions": 2,
+    "fine_tuned_latency": 0.5821377038955688,
+    "baseline_latency": 0.07667315006256104,
+    "latency_improvement": -0.5054645538330078,
+    "fine_tuned_throughput": 1.7178066174174358,
+    "baseline_throughput": 13.042375318922668,
+    "throughput_improvement": -11.324568701505232,
+    "total_tokens_fine_tuned": 0,
+    "total_tokens_baseline": 0
+  }
+}
