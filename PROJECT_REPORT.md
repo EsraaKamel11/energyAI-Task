@@ -4,7 +4,7 @@
 **Version:** 1.0.0  
 **Date:** July 2025 
 **Status:** Production Ready  
-**Repository:** [GitHub Repository]  
+**Repository:** energyAI-Task 
 
 ---
 
