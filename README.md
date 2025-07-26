@@ -470,7 +470,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-**Made with ❤️ by the EV Charging LLM Pipeline Team**
+**Made with ❤️**
 
 [![GitHub stars](https://img.shields.io/github/stars/EsraaKamel11/EV-Charging-Task?style=social)](https://github.com/EsraaKamel11/EV-Charging-Task/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/EsraaKamel11/EV-Charging-Task?style=social)](https://github.com/EsraaKamel11/EV-Charging-Task/network/members)
